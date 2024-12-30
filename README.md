@@ -50,7 +50,7 @@ pip install web3 rich
 
 ```bash
 git clone https://github.com/HexQuant-hub/Abstract-Auto-Transaction.git
-Abstract-Auto-Transaction
+cd Abstract-Auto-Transaction
 ```
 
 ### Run the Tool
