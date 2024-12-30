@@ -58,6 +58,10 @@ def get_random_amount() -> float:
     """Generate random amount between 0.00001 and 0.000099 ETH."""
     return random.randint(10, 99) / 1000000
 
+def get_random_delay() -> int:
+    """Generate random delay between 3 and 17 seconds."""
+    return random.randint(3, 17)
+
 class TransactionManager:
     def __init__(self, w3: Web3, chain_id: int, block_explorer: str):
         self.w3 = w3
@@ -155,7 +159,9 @@ def process_transactions(w3: Web3, tx_manager: TransactionManager, private_key: 
                 console.print(f"  [blue]Explorer:[/blue] {NETWORK_CONFIG['block_explorer']}/tx/{tx_hash}")
 
                 nonce += 1
-                time.sleep(1)
+                delay = get_random_delay()
+                console.print(f"[bold yellow]Waiting for {delay} seconds before the next transaction...[/bold yellow]")
+                time.sleep(delay)
 
             except Exception as e:
                 console.print(f"[bold red]Transaction {i} failed:[/bold red]")
